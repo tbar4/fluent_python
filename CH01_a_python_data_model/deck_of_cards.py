@@ -18,6 +18,7 @@ class FrenchDeck:
     def __getitem__(self, position):
         return self._cards[position]
 
+
 # Card in deck
 beer_card = Card("7", "diamonds")
 print("Beer Card: ", beer_card)
@@ -44,15 +45,17 @@ for card in reversed(deck):
     print("Reversed Card:", card)
 
 # __getitem__ also allows for `in` statements
-print("Card Queen of Diamonds exists?", Card('Q', 'diamonds') in deck)
-print("Card T of None exists?", Card('T', 'none') in deck)
+print("Card Queen of Diamonds exists?", Card("Q", "diamonds") in deck)
+print("Card T of None exists?", Card("T", "none") in deck)
 
 # Sort the suits
-suit_values = dict(spades = 3, hearts = 2, diamonds = 1, clubs = 0)
+suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+
 
 def spades_high(card):
     rank_value = FrenchDeck.ranks.index(card.rank)
     return rank_value * len(suit_values) + suit_values[card.suit]
+
 
 for card in sorted(deck, key=spades_high):
     print(card)
